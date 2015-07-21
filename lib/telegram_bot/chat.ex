@@ -36,21 +36,21 @@ defmodule TelegramBot.Chat do
     {:stop, :normal, :ok, state}
   end
 
-  def handle_message(%Message{text: "help"}, %State{chat: chat}) do
-    API.send_message(chat.id, "I will accept the following commands:\nfree - Show free memory\nip - Show current IP Address\npic - Show picture with an Authentic Klingon Insult\n")
+  def handle_message(%Message{text: "/help"}, %State{chat: chat}) do
+    API.send_message(chat.id, "I will accept the following commands:\n/free - Show free memory\n/ip - Show current IP Address\n/pic - Show picture with an Authentic Klingon Insult\n")
   end
-  def handle_message(%Message{text: "free"}, %State{chat: chat}) do
+  def handle_message(%Message{text: "/free"}, %State{chat: chat}) do
     {all, used, free} = ServerInfo.free_m
     API.send_message(chat.id, "My free memory is: #{free}, used: #{used}!")
   end
-  def handle_message(%Message{text: "ip"}, %State{chat: chat}) do
+  def handle_message(%Message{text: "/ip"}, %State{chat: chat}) do
     ip = ServerInfo.my_ip
     API.send_message(chat.id, "My IP is still #{ip}!")
   end
   def handle_message(%Message{text: "hello", from: user}, %State{chat: chat}) do
     API.send_message(chat.id, "Today is a good day to die, #{user.first_name}!")
   end
-  def handle_message(%Message{text: "pic"}, %State{chat: chat}) do
+  def handle_message(%Message{text: "/pic"}, %State{chat: chat}) do
     API.send_photo(chat.id)
   end
   def handle_message(_, %State{chat: chat}) do
