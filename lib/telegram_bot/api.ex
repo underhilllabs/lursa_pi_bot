@@ -2,8 +2,8 @@ defmodule TelegramBot.API do
   use HTTPoison.Base
 
   @post_headers %{"Content-type" => "application/x-www-form-urlencoded"}
-  @photos  ["lursa1", "betor", "duras", "gowran", "klingon1"]
-  @captions  ["PetaQ!", "You dress like a Ferengi", "Look at the Qa'Hom shaking in his Pe'lak'ta'huk!", "Youre head has ridges, but your blood runs like water."]
+  @photos  ["lursa1", "betor", "duras", "gowron", "gowron2", "klingon1", "martok", "martok2"]
+  @captions  ["PetaQ!", "You dress like a Ferengi", "Look at the Qa'Hom shaking in his Pelak'tak'chuk!", "Your head has ridges, but your blood runs like water.", "Those shoes have no honor!", "Look at this Hue-mon waving his jum jum stick like its a mighty Bat'leth!", "Of course, Macbeth sounds best in the original Klingon."]
 
   def process_url(url) do
     "https://api.telegram.org/bot" <> token <> "/" <> url
